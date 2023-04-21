@@ -39,7 +39,7 @@ SyncPath:="E:\Dropbox"
 SysGet, VirtualWidth, 78
 SysGet, VirtualHeight, 79
 
-Loop, read, %A_ScriptDir%/White List.txt
+Loop, read, %A_ScriptDir%/white_list.txt
 {
     GroupAdd, whiteList, ahk_exe %A_LoopReadLine%
 }
@@ -102,7 +102,7 @@ $LButton::
     If !WinActive(winTitle)
     {
         win:= WinExist("A")
-        ShowMainGui(perPosX,perPosY,preTime) 
+        ShowMainGui(perPosX,perPosY,preTime)
     }
 Return
 #IfWinActive
@@ -153,7 +153,7 @@ GetSelectText()
     global
     ClipSaved:=ClipBoardAll
     ClipBoard:=""
-    ; PostMessage, 0x301, , , , ahk_id %win% 
+    ; PostMessage, 0x301, , , , ahk_id %win%
     ; PostMessage WM_COPY not work for some windows (even steam or notepad and more), why?
     Send, {CtrlDown}c
     ClipWait 0.1, 1
@@ -207,28 +207,28 @@ GetSelectText()
         {
             If (winClipToggle=1)
             {
-                Gui, Add, Button, x+0 yp hp -Wrap vselectAll gSelectAll, ` ` 全选` ` ` 
-                Gui, Add, Button, x+0 yp hp -Wrap vpaste gPaste, ` ` 粘贴` ` ` 
+                Gui, Add, Button, x+0 yp hp -Wrap vselectAll gSelectAll, ` ` SelectAll` ` `
+                Gui, Add, Button, x+0 yp hp -Wrap vpaste gPaste, ` ` Paste` ` `
             }
         }
         Else
         {
-            Gui, Add, Button, x+0 yp hp -Wrap vsearch gGoogleSearch, ` 🔍` ` 
+            Gui, Add, Button, x+0 yp hp -Wrap vsearch gGoogleSearch, ` 🔍` `
             If (linkText!="")
-                Gui, Add, Button, x+0 yp hp -Wrap gLink, ` %linkButton%` ` 	
-            Gui, Add, Button, x+0 yp hp -Wrap vselectAll gSelectAll, ` ` 全选` ` ` 
+                Gui, Add, Button, x+0 yp hp -Wrap gLink, ` %linkButton%` `
+            Gui, Add, Button, x+0 yp hp -Wrap vselectAll gSelectAll, ` ` SelectAll` ` `
             If (winClipToggle=1)
             {
-                Gui, Add, Button, x+0 yp hp -Wrap vcut gCut, ` ` 剪切` ` `
-                Gui, Add, Button, x+0 yp hp -Wrap vcopy gCopy, ` ` 复制` ` ` 
-                Gui, Add, Button, x+0 yp hp -Wrap vpaste gPaste, ` ` 粘贴` ` ` 
+                Gui, Add, Button, x+0 yp hp -Wrap vcut gCut, ` ` Cut` ` `
+                Gui, Add, Button, x+0 yp hp -Wrap vcopy gCopy, ` ` Copy` ` `
+                Gui, Add, Button, x+0 yp hp -Wrap vpaste gPaste, ` ` Paste` ` `
             }
             Else
             {
-                Gui, Add, Button, x+0 yp hp -Wrap vcopy gCopy, ` ` 复制` ` ` 
+                Gui, Add, Button, x+0 yp hp -Wrap vcopy gCopy, ` ` Copy` ` `
             }
-            Gui, Add, Button, x+0 yp hp -Wrap vgTranslate gGoogleTranslate, ` ` G 翻译` ` ` 
-            Gui, Add, Button, x+0 yp hp -Wrap vdTranslate gDeepLTranslate, ` ` D 翻译` ` ` 
+            Gui, Add, Button, x+0 yp hp -Wrap vgTranslate gGoogleTranslate, ` ` G Translate` ` `
+            Gui, Add, Button, x+0 yp hp -Wrap vdTranslate gDeepLTranslate, ` ` D Translate` ` `
         }
 
         Gui, font
@@ -340,4 +340,4 @@ TransBox(text,originalLang,tragetLang) {
     pwb.Quit
 
 return, result
-} 
+}
