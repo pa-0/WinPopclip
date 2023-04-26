@@ -31,7 +31,7 @@ controlHight:=25
 winHeightPx:=controlHight*dpiRatio
 bGColor:="000000"
 fontColor:="ffffff"
-ver:="0.91"
+ver:="1.0.1"
 fontSize:=12
 fontFamily:="微软雅黑"
 userLanguage:="zh-CN"
@@ -45,12 +45,12 @@ Loop, read, %A_ScriptDir%/white_list.txt
 }
 
 Menu, tray, NoStandard
-Menu, tray, add, 更新 | Ver %ver%, UpdateScrit
-Menu, tray, add, 反馈 | Issues, Issues
-;Menu, tray, add, 暂停 | Pause, PauseScrit
+Menu, tray, add, Update | Ver %ver%, UpdateScrit
+Menu, tray, add, Feedback, Issues
+;Menu, tray, add, Pause, PauseScrit
 Menu, tray, add
-Menu, tray, add, 重置 | Reload, ReloadScrit
-Menu, tray, add, 退出 | Exit, ExitScrit
+Menu, tray, add, Reload, ReloadScrit
+Menu, tray, add, Exit, ExitScrit
 Return
 
 ReloadScrit:
@@ -62,11 +62,11 @@ PauseScrit:
 Return
 
 UpdateScrit:
-    Run, https://github.com/millionart/WinPopclip/releases
+    Run, https://github.com/zhiyelee/WinPopclip/releases
 Return
 
 Issues:
-    Run, https://github.com/millionart/WinPopclip/issues
+    Run, https://github.com/zhiyeee/WinPopclip/issues
 Return
 
 ExitScrit:
@@ -214,6 +214,7 @@ GetSelectText()
         Else
         {
             Gui, Add, Button, x+0 yp hp -Wrap vsearch gGoogleSearch, ` 🔍` `
+            Gui, Add, Button, x+0 yp hp -Wrap vDictYoudao gDictYoudao, `📖`
             If (linkText!="")
                 Gui, Add, Button, x+0 yp hp -Wrap gLink, ` %linkButton%` `
             Gui, Add, Button, x+0 yp hp -Wrap vselectAll gSelectAll, ` ` SelectAll` ` `
@@ -228,7 +229,8 @@ GetSelectText()
                 Gui, Add, Button, x+0 yp hp -Wrap vcopy gCopy, ` ` Copy` ` `
             }
             Gui, Add, Button, x+0 yp hp -Wrap vgTranslate gGoogleTranslate, ` ` G Translate` ` `
-            Gui, Add, Button, x+0 yp hp -Wrap vdTranslate gDeepLTranslate, ` ` D Translate` ` `
+            ;Gui, Add, Button, x+0 yp hp -Wrap vdTranslate gDeepLTranslate, ` ` D Translate` ` `
+            ;Gui, Add, Button, x+0 yp hp -Wrap vdTranslate gDeepLTranslate, ` ` D Translate` ` `
         }
 
         Gui, font
@@ -309,6 +311,13 @@ DeepLTranslate:
     selectText:=UriEncode(selectText,1)
     Run, https://www.deepl.com/translator#auto/%userLanguage%/%selectText%
 Return
+
+DictYoudao:
+    Gui, Destroy
+    selectText:=UriEncode(selectText,1)
+    Run, https://dict.youdao.com/result?word=%selectText%&lang=en
+Return
+
 
 ; from http://the-automator.com/parse-url-parameters/
 UriEncode(Uri, Mode := 0, RE="[0-9A-Za-z]"){

@@ -10,14 +10,3 @@ WinPopClip is a software that imitates popclip on Windows, written using autohot
 
 ## Other
 * More features will be gradually improved
-
-## Donate
-If this script helps you, you can choose to donate to support development.
-
-## [Donate via Paypal](https://www.paypal.me/millionart)
-
-or
-
-wechat | alipay
----- | ---
-![GitHub](https://millionart.gitbooks.io/shader-forge-chinese-manual-unofficial/content/assets/wechat.png "WeChat") | ![GitHub](https://millionart.gitbooks.io/shader-forge-chinese-manual-unofficial/content/assets/alipay.png "alipay")
